@@ -8,8 +8,8 @@
     <%= yield(:head) %>
   </head>
   <body>
-	<div id='header' align='center' >
-		<!-- refactora in header! -->
+    <div id='header' align='center' >
+    <!-- refactora in header! -->
 		[ <%= %w{todos projects users}.map{|model| link_to(model,"/#{model}")}.join(' | ').html_safe %>
 		]
 		<%= render :partial => '../../vendor/plugins/ric_plugin/lib/app/views/ric_shared/nifty_login' %>
@@ -21,8 +21,8 @@
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
-	<div id='header'>
-		<%= render :partial => '../../vendor/plugins/ric_plugin/lib/app/views/ric_shared/footer' %>
-	</div>
+    <div id='header'>
+       <%= render :partial => '../../vendor/plugins/ric_plugin/lib/app/views/ric_addons/shared/footer' %>
+    </div>
   </body>
 </html>

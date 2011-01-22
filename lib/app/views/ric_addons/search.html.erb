@@ -1,0 +1,28 @@
+<h1>Search for '<%= @query_string %>'</h1>
+
+ <%= link_to "Tags for #{@query_string }", "/tags/#{@query_string }" %>
+
+<% ApplicationHelper::HEADER_MODELS.each{ |model|
+	begin
+%>
+<% @entries = model.search(@query_string)	
+   if @entries.size > 0
+%>
+	<p>
+		<b><%= link_to( pluralize( @entries.size, model.to_s) , "/#{model.to_s.pluralize}/" )%> with  '<%= @query_string %>':</b>
+	<% @entries.each { |entry|	%>
+		<%= link_to( entry.to_s, entry) %>,
+	<%	} %>
+	.</p>
+<%
+   end
+	rescue Exception => e
+		%>
+	<h5>Exception for <%= model %>: <span class='debug'><%= $! %></span> </h5>
+	<%
+end
+
+
+} %>
+
+

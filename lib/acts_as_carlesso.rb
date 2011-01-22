@@ -4,7 +4,6 @@
   TODO:
   - mobile views: http://it.asciicasts.com/episodes/199-dispositivi-mobili
 
-
 =end    
 
 module ActiveRecord #:nodoc:

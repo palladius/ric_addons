@@ -16,6 +16,8 @@ TODO
 Here more stuff: http://www.themodestrubyist.com/2010/03/05/rails-3-plugins---part-2---writing-an-engine/
 You can create a ric_admin/ page with lots of auto stuff (like graphs E/R and stuff).
 
+* Naive Search Page and naive search partial..!
+
 
 app/views/ric_addons/
   about_ric_addons:
