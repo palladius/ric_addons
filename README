@@ -1,7 +1,13 @@
-RicPlugin
+RicAddons
 =========
 
-This is Riccardo Carlesso first plugin
+This is Riccardo Carlesso second plugin (first to be on a project on its own).
+
+INSTALL
+=======
+
+* Rails 2:  script/plugin install git@github.com:palladius/ric_addons.git
+* Rails 3:   rails plugin install git@github.com:palladius/ric_addons.git
 
 
 TODO
@@ -10,6 +16,13 @@ TODO
 Here more stuff: http://www.themodestrubyist.com/2010/03/05/rails-3-plugins---part-2---writing-an-engine/
 You can create a ric_admin/ page with lots of auto stuff (like graphs E/R and stuff).
 
+
+app/views/ric_addons/
+  about_ric_addons:
+     roadmap: take roadmap.yml
+     docs:    rake docs?!?
+     about:   
+     license:  copy ~/*LICENSE
 
 Example
 =======
