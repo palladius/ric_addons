@@ -12,7 +12,7 @@
     <!-- refactora in header! -->
 		[ <%= %w{todos projects users}.map{|model| link_to(model,"/#{model}")}.join(' | ').html_safe %>
 		]
-		<%= render :partial => '../../vendor/plugins/ric_plugin/lib/app/views/ric_shared/nifty_login' %>
+		<%= render :partial => 'ric_addons/nifty_login' %>
 	</div>
     <div id="container">
       <% flash.each do |name, msg| %>
@@ -22,7 +22,7 @@
       <%= yield %>
     </div>
     <div id='header'>
-       <%= render :partial => '../../vendor/plugins/ric_plugin/lib/app/views/ric_addons/shared/footer' %>
+       <%= render :partial => 'ric_addons/footer' %>
     </div>
   </body>
 </html>
