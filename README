@@ -14,6 +14,15 @@ To take advantage of it (until I dont understand how it works u have to manually
 - copy the layout from vendor/plugins/ric_addons/lib/app/views/layout/application.html.erb
 - ln -s:  app/views/ric_addons/ to vendor/plugins/ric_addons/lib/app/views/ric_addons/ 
 
+* Routes:
+
+ get "ric_addons/index"
+ get "ric_addons/search"
+ 
+* application_controller.rb:
+
+ include Searchable
+
 TODO
 ====
 

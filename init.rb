@@ -16,7 +16,8 @@ $RIC_ADDONS_DATE =  $RIC_ADDONS_HISTORY.first[:date] # version
 
 require File.dirname(__FILE__) + '/lib/acts_as_carlesso'
 require 'ric_addons'
-require 'searchable'
+require File.dirname(__FILE__) + '/lib/searchable'
+#require 'searchable'
 
 # copied from Chad Fowler book pag.239
 puts IO.read( File.join(directory, 'README') ) rescue "Some error"

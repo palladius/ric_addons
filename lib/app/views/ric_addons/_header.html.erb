@@ -1,17 +1,21 @@
 <%
-	ric_websites_ring =   {
-		'RAB' => 'http://ricaddressbook.heroku.com/',
-		'lo' => 'http://localhost:3000',
-		'SeptOber' => 'http://septober.heroku.com',
-		'FsDB' => 'http://fsdb.dev.palladius.eu/',
-		'RicLife' => 'https://riclife.palladius.eu/',
-	}
-
+	base_models = %w{todos projects ric_addons#index }
 %>
-<div class='header' align='center' >
-    <!-- refactora in header! -->
-		[ <%= %w{todos projects users }.map{|model| link_to(model,"/#{model}")}.join(' | ').html_safe %>
-		]
-		<%= render :partial => 'ric_addons/nifty_login' %>
-		<%= render :partial => 'ric_addons/minimal_search_form' %>
-</div>
+<table border='0' width='100%' class='header_table' >
+	<tr>
+		<td align='center' width='80%' >
+			<%= link_to( '<b>Home</b>'.html_safe ,"/") %> 
+			<% base_models.each do |model| %> 
+				<%= link_to(model,"/#{model.gsub(/#/,'/')}") %>
+			<% end %> 
+		<td align='right' >
+			<%= render :partial => 'ric_addons/minimal_search_form' %>
+	</tr>
+	<tr>
+		<td colspan=''>
+			<a href='/'><img src='/images/logo-banner.png' width='100%' ></a>
+		<td valign='top' >
+			<%= render :partial => 'ric_addons/nifty_login' %>
+			
+	</tr>
+</table>

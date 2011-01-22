@@ -1,10 +1,10 @@
 <%
+ #include Searchable
  @searchable_models = ApplicationHelper::HEADER_MODELS rescue [ Project,Todo,User] 
 %>
 <% title "RicAddon::Search for #{@query_string}" %>
-<h1>Search for '<%= @query_string %>'</h1>
 
- <%= link_to "Tags for #{@query_string }", "/tags/#{@query_string }" %>
+ <%#= link_to "Tags for #{@query_string }", "/tags/#{@query_string }" %>
 
 <% @searchable_models.each{ |model|
 	begin
