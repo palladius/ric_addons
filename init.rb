@@ -1,10 +1,17 @@
 # Include hook code here
 
-$RIC_ADDONS_VER = '0.1b'
-$RIC_ADDONS_HISTORY = [
+$RIC_ADDONS_HISTORY = [ # Array of Hash style
     #VER        #DATE       # Description :)
-  [ '0.2.1' ,  '20110121', 'Copied from ric_plugin v0.1b (as it deserved to be copied!)' ] ,
+    { :ver => '0.2.1a', :date =>'20110121', :desc => 'Corrected typo' } ,
+    { :ver => '0.2.1',  :date =>'20110121', :desc => 'Copied from ric_plugin v0.1b (as it deserved to be copied!)' } ,
 ]
+#$RIC_ADDONS_HISTORY = [  # Array of Array style
+#    #VER        #DATE       # Description :)
+#    [ '0.2.1a' ,  '20110121', 'Corrected typo' ] ,
+#    [ '0.2.1' ,  '20110121', 'Copied from ric_plugin v0.1b (as it deserved to be copied!)' ] ,
+#]
+$RIC_ADDONS_VER =  $RIC_ADDONS_HISTORY.first[:ver] # version
+
 
 require File.dirname(__FILE__) + '/lib/acts_as_carlesso'
 require 'ric_addons'
