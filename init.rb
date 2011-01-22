@@ -1,10 +1,10 @@
 # Include hook code here
 
 $RIC_ADDONS_VER = '0.1b'
-$RIC_ADDONS_HISTORY = {
+$RIC_ADDONS_HISTORY = [
     #VER        #DATE       # Description :)
   [ '0.2.1' ,  '20110121', 'Copied from ric_plugin v0.1b (as it deserved to be copied!)' ] ,
-}
+]
 
 require File.dirname(__FILE__) + '/lib/acts_as_carlesso'
 require 'ric_addons'
