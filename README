@@ -1,0 +1,20 @@
+RicPlugin
+=========
+
+This is Riccardo Carlesso first plugin
+
+
+TODO
+====
+
+Here more stuff: http://www.themodestrubyist.com/2010/03/05/rails-3-plugins---part-2---writing-an-engine/
+You can create a ric_admin/ page with lots of auto stuff (like graphs E/R and stuff).
+
+
+Example
+=======
+
+Example goes here.
+
+
+Copyright (c) 2011 Riccardo Carlesso, released under the MIT license
