@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+	<div id='header' align='center' >
+		<!-- refactora in header! -->
+		[ <%= %w{todos projects users}.map{|model| link_to(model,"/#{model}")}.join(' | ').html_safe %>
+		]
+		<%= render :partial => '../../vendor/plugins/ric_plugin/lib/app/views/ric_shared/nifty_login' %>
+	</div>
+    <div id="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <%= yield %>
+    </div>
+	<div id='header'>
+		<%= render :partial => '../../vendor/plugins/ric_plugin/lib/app/views/ric_shared/footer' %>
+	</div>
+  </body>
+</html>
