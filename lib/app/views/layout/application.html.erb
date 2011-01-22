@@ -8,20 +8,17 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id='header' align='center' >
-    <!-- refactora in header! -->
-		[ <%= %w{todos projects users}.map{|model| link_to(model,"/#{model}")}.join(' | ').html_safe %>
-		]
-		<%= render :partial => 'ric_addons/nifty_login' %>
-	</div>
-    <div id="container">
+    <div id='header' >
+      <%= render :partial => 'ric_addons/header' %>
+    </div>
+    <div id="container" >
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
-    <div id='header'>
+    <div id='footer' >
        <%= render :partial => 'ric_addons/footer' %>
     </div>
   </body>

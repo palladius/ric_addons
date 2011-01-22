@@ -9,6 +9,10 @@ INSTALL
 * Rails 2:  script/plugin install git@github.com:palladius/ric_addons.git
 * Rails 3:   rails plugin install git@github.com:palladius/ric_addons.git
 
+To take advantage of it (until I dont understand how it works u have to manually symlink, sigh!)
+
+- copy the layout from vendor/plugins/ric_addons/lib/app/views/layout/application.html.erb
+- ln -s:  app/views/ric_addons/ to vendor/plugins/ric_addons/lib/app/views/ric_addons/ 
 
 TODO
 ====

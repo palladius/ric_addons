@@ -1,0 +1,17 @@
+<%
+	ric_websites_ring =   {
+		'RAB' => 'http://ricaddressbook.heroku.com/',
+		'lo' => 'http://localhost:3000',
+		'SeptOber' => 'http://septober.heroku.com',
+		'FsDB' => 'http://fsdb.dev.palladius.eu/',
+		'RicLife' => 'https://riclife.palladius.eu/',
+	}
+
+%>
+<div class='header' align='center' >
+    <!-- refactora in header! -->
+		[ <%= %w{todos projects users }.map{|model| link_to(model,"/#{model}")}.join(' | ').html_safe %>
+		]
+		<%= render :partial => 'ric_addons/nifty_login' %>
+		<%= render :partial => 'ric_addons/minimal_search_form' %>
+</div>
