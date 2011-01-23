@@ -15,7 +15,7 @@
 		<td colspan=''>
 			<a href='/'><img src='/images/logo-banner.png' width='100%' ></a>
 		<td valign='top' >
-			<%= render :partial => 'ric_addons/nifty_login' %>
+			<%= render :partial => 'ric_addons/nifty_login' rescue "NiftyLoginErr: #{$!}" %>
 			
 	</tr>
 </table>
