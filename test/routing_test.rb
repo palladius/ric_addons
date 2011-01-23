@@ -6,12 +6,12 @@ class RoutingTest < Test::Unit::TestCase
 
   def setup
     ActionController::Routing::Routes.draw do |map|
-      map.yaffles
+      map.ric_addons
     end
   end
 
-  def test_yaffles_route
-    assert_recognition :get, "/yaffles", :controller => "yaffles_controller", :action => "index"
+  def test_ric_addons_route
+    assert_recognition :get, "/ric_addons", :controller => "ric_addons_controller", :action => "index"
   end
 
   private
