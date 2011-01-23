@@ -1,13 +1,13 @@
 
 class RicAddons < Thor
-  desc :help, "Menga's example"
-  def help
-    puts 'Runno la config con Thor! Doing nuthin actually'
-  end
+  $skel_dir = 'vendor/plugins/ric_addons/skel'
+  $thor_ver = '0.9.4'
 
   desc :copy_files, "[subdir='**'] Copies files from ric_addons to your local dir [Try subdir='public/**']"
   method_options :help => false
-  def copy_files(subdir = '**' )
+  def copy_files(subdir = '**' , opts={})
+    new_ver = File.open('vendor/plugins/ric_addons/VERSION').read rescue "VerErr(#{$!})"
+    
     #options[:force] # args as --force
     if options[:help]  # args as --force
       puts "Usage: thor ric:copy_files [subdir]"
@@ -16,41 +16,62 @@ class RicAddons < Thor
       puts " Example: thor ric_addons:copy_files 'app/views/**' "
       return -1
     end
-    say "Beware, copying a few files…", :red
-    new_ver = File.open('vendor/plugins/ric_addons/VERSION').read rescue "VerErr(#{$!})"
-    puts "RicAddons: injecting files from version: #{new_ver}"
-    Dir["vendor/plugins/ric_addons/skel/#{subdir}/*"].each do |source|
+    say "RicAddons v.#{new_ver}: Copying a few files from '#{$skel_dir}'…", :yellow
+    #puts "RicAddons: injecting files from version: #{new_ver}"
+    Dir["#{$skel_dir}/#{subdir}/*"].each do |source|
       destination = source.gsub(/^vendor\/plugins\/ric_addons\/skel\//,'')
       if File.exists?(destination)
-        puts "Skipping #{destination} cos it already exists" 
+        puts "Skipping #{destination} cos it already exists" if opts.fetch(:verbose,false)
       else
         #puts "Generating #{destination}"
-        _copy_single_file(source,destination)
+        _copy_single_file(source,destination, :lib_ver => new_ver )
       end
     end
   end
   
-  
-  
-  desc :ric_addons_symlink, 'Should add symlinks from vendors/plugins/ric_addons/ * helpers/models/controllers...'
-  def ric_addons_symlink
-    puts "TODO.. copy file like: "
+private
+  def _banners(type,opts={})
+    common_banner = "
+     DONT TOUCH THIS FILE!! It was included automatically. 
+     Rather run this again: 'thor ric_addons:copy_files' 
+     # Thor Script ver:   #{$thor_ver}
+     # RicAddons version: #{opts[:lib_ver]}
+     # @tags:             thor, auto, cool, ric_addons
+    "
+    $banners = {
+      :ruby => "=begin\n#{common_banner}\n=end\n",
+      :html_erb => "<%\n=begin\n#{common_banner}\n=end\n%>\n"
+    }
+    return $banners[type.to_sym] # ,"##### Unknown Banner#{}")
   end
   
-private
-  def _copy_single_file(source,destination)
-    say "Copying '#{source}' to '#{destination}'", :yellow
+  def _inject_banner_into_file(type,src,dest,opts={})
+    #bann
+    say "TODO: #{src} into #{dest} with banner.."
+    # `(echo -en '#{_banners(type.to_sym,opts)}' ; cat '#{source}' )> '#{destination}'`
+    File.open(dest,'w') do |f|
+      f.write _banners(type,opts)
+      f.write( File.open(src).read )
+    end
+  end
+  
+  def _copy_single_file(source,destination, opts={})
     return if File.exists?(destination)
-    # if dir doesnt exist I create
-    target_dir = File.dirname(destination)
-    unless Dir.exists?(target_dir)
-      File.mkdir(target_dir)
+    exists = File.exists?(   destination )
+    if File.directory?(source) && ! exists # if dir doesnt exist I create
+      say "Creating: #{destination}", :red
+      Dir.mkdir(destination) rescue nil
+      return 
     end
-    if destination.match /rb$/ # if ruby..
-      puts "TODO add version in header and DONT TOUCH ME, rather run 'ric_addons:copy_files' again"
-      `echo '#TODO run: thor ric_addons:copy_files' > #{destination}`
+
+    if destination.match /(\.rb)$/ # if ruby..
+      _inject_banner_into_file(:ruby, source,destination,opts)
+    elsif destination.match /(\.html\.erb)$/ # if ruby..
+      _inject_banner_into_file(:html_erb,source,destination,opts)
+    else
+      say( "Copying '#{source}'", :yellow) if opts.fetch(:verbose,true)
+      FileUtils.cp(File.expand_path(source),File.expand_path(destination)) rescue "FileCpErr:(#{$!})"
     end
-    FileUtils.cp(source,destination) rescue "FileCpErr:(#{$!})"
   end
 
   
