@@ -10,15 +10,17 @@ $RIC_ADDONS_HISTORY = [ # Array of Hash style
 $RIC_ADDONS_VER  =  $RIC_ADDONS_HISTORY.first[:ver]  # version
 $RIC_ADDONS_DATE =  $RIC_ADDONS_HISTORY.first[:date] # version
 
+# Copied from here
 begin
   require "jeweler"
   Jeweler::Tasks.new do |gem|
     gem.name = "ric_addons"
     gem.summary = "RicAddons experimental Engine for Rails 3"
-    gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
+    gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*", 
+      "README", "VERSION"
+    ]
     # other fields that would normally go in your gemspec
     # like authors, email and has_rdoc can also be included here
-
   end
 rescue
   puts "Jeweler or one of its dependencies is not installed."
