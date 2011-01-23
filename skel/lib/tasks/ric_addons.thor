@@ -15,24 +15,37 @@ class RicAddons < Thor
       puts "  --force: force copying (TBIY)"
       return -1
     end
-    new_ver = File.open('VERSION').read
+    say "Beware, copying a few files…", :red
+    new_ver = File.open('vendor/plugins/ric_addons/VERSION').read rescue "VerErr(#{$!})"
     puts "RicAddons: injecting files from version: #{new_ver}"
     Dir["vendor/plugins/ric_addons/skel/#{subdir}/*"].each do |source|
       destination = source.gsub(/^vendor\/plugins\/ric_addons\/skel\//,'')
       if File.exists?(destination)
         puts "Skipping #{destination} cos it already exists" 
       else
-        puts "Generating #{destination}"
-        puts "Copying '#{source}' to '#{ destination.to_s}'"
+        #puts "Generating #{destination}"
+        _copy_single_file(source,destination)
       end
-      #FileUtils.cp(source,destination)
     end
   end
+  
+  
   
   desc :ric_addons_symlink, 'Should add symlinks from vendors/plugins/ric_addons/ * helpers/models/controllers...'
   def ric_addons_symlink
     puts "TODO.. copy file like: "
   end
+  
+private
+  def _copy_single_file(source,destination)
+    say "Copying '#{source}' to '#{destination}'", :yellow
+    return if File.exists?(destination)
+    if destination.match /rb$/ # if ruby..
+      puts "TODO add version in header and DONT TOUCH ME, rather run 'ric_addons:copy_files' again"
+    end
+    FileUtils.cp(source,destination) rescue "FileCpErr:(#{$!})"
+  end
+
   
 end
 
