@@ -2,6 +2,7 @@
 
 $RIC_ADDONS_HISTORY = [ # Array of Hash style
     #VER        #DATE       # Description :)
+    { :ver => '0.2.2',  :date =>'20110122', :desc => 'Great changes ahead. Still I have the bad symlink though :(' } ,
     { :ver => '0.2.1a', :date =>'20110121', :desc => 'Corrected typo' } ,
     { :ver => '0.2.1',  :date =>'20110121', :desc => 'Copied from ric_plugin v0.1b (as it deserved to be copied!)' } ,
 ]
