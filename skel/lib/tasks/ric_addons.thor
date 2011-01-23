@@ -1,7 +1,7 @@
 
 class RicAddons < Thor
   $skel_dir = 'vendor/plugins/ric_addons/skel'
-  $thor_ver = '0.9.4'
+  $thor_ver = '0.9.4b'
 
   desc :copy_files, "[subdir='**'] Copies files from ric_addons to your local dir [Try subdir='public/**']"
   method_options :help => false
@@ -46,8 +46,7 @@ private
   end
   
   def _inject_banner_into_file(type,src,dest,opts={})
-    #bann
-    say "TODO: #{src} into #{dest} with banner.."
+    say "Injecting #{dest} with '#{type}' banner.."
     # `(echo -en '#{_banners(type.to_sym,opts)}' ; cat '#{source}' )> '#{destination}'`
     File.open(dest,'w') do |f|
       f.write _banners(type,opts)

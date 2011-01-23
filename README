@@ -23,6 +23,11 @@ To take advantage of it (until I dont understand how it works u have to manually
 * application_controller.rb:
 
  include Searchable
+ 
+* Inject stuff into your projects:
+ $ ln -s /path/to/
+ $ thor list 
+ $ thor ric_addons:copy_files 
 
 TODO
 ====
