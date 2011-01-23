@@ -25,9 +25,11 @@ To take advantage of it (until I dont understand how it works u have to manually
  include Searchable
  
 * Inject stuff into your projects:
- $ ln -s /path/to/
+ $ ln -s /path/to/ric_addons/skel/lib/tasks/ric_addons.thor /your_app/lib/tasks/
  $ thor list 
- $ thor ric_addons:copy_files 
+ $ thor ric_addons:copy_files  # should do the trick
+ 
+ Why didnt I use a generator? Maybe it was too overwhelming.. maybe Ive just seen the RB nice tutorial on Thor ;)
 
 TODO
 ====
