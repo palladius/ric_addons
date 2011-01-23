@@ -18,8 +18,7 @@ To take advantage of it (until I dont understand how it works u have to manually
 
 * Routes:
 
- get "ric_addons/index"
- get "ric_addons/search"
+  See config/routes.rb here..
  
 * application_controller.rb:
 

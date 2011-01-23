@@ -20,6 +20,10 @@ require 'ric_addons'
 require File.dirname(__FILE__) + '/lib/searchable'
 #require 'searchable'
 
+require "routing"
+ActionController::Routing::RouteSet::Mapper.send :include, RicAddons::Routing::MapperExtensions
+
+
 # copied from Chad Fowler book pag.239
 puts IO.read( File.join(directory, 'README') ) rescue "Some error"
 puts RicAddons.yellow("Riccardo plugin hook v.#{$RIC_ADDONS_VER} on #{$RIC_ADDONS_DATE}, yay!") rescue "ric_addons v#{$RIC_ADDONS_VER}: Errors with yellow :-("
