@@ -13,6 +13,7 @@ class RicAddons < Thor
       puts "Usage: thor ric:copy_files [subdir]"
       puts "  --help:  this help"
       puts "  --force: force copying (TBIY)"
+      puts " Example: thor ric_addons:copy_files 'app/views/**' "
       return -1
     end
     say "Beware, copying a few files…", :red
@@ -40,8 +41,14 @@ private
   def _copy_single_file(source,destination)
     say "Copying '#{source}' to '#{destination}'", :yellow
     return if File.exists?(destination)
+    # if dir doesnt exist I create
+    target_dir = File.dirname(destination)
+    unless Dir.exists?(target_dir)
+      File.mkdir(target_dir)
+    end
     if destination.match /rb$/ # if ruby..
       puts "TODO add version in header and DONT TOUCH ME, rather run 'ric_addons:copy_files' again"
+      `echo '#TODO run: thor ric_addons:copy_files' > #{destination}`
     end
     FileUtils.cp(source,destination) rescue "FileCpErr:(#{$!})"
   end
