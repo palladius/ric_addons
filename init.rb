@@ -22,13 +22,13 @@ require File.dirname(__FILE__) + '/lib/searchable'
 #ActionController::Routing::RouteSet::Mapper.send :include, RicAddons::Routing::MapperExtensions
 
 #### controllrs/helpers/views:
-%w{ models controllers helpers }.each do |dir|
-  path = File.join(directory, 'lib', 'app', dir)
-  $LOAD_PATH << path
-  Dependencies.load_paths << path
-  Dependencies.load_once_paths.delete(path)
-end
-
+# NON VA!
+### %w{ models controllers helpers }.each do |dir|
+###   path = File.join(RAILS_ROOT, 'vendor' 'plugin', 'ric_addons' 'skel', 'app', dir)
+###   $LOAD_PATH << path
+###   Dependencies.load_paths << path
+###   Dependencies.load_once_paths.delete(path)
+### end
 
 # copied from Chad Fowler book pag.239
 puts IO.read( File.join(directory, 'README') ) rescue "Some error"
