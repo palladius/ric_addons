@@ -2,6 +2,7 @@
 
 $RIC_ADDONS_HISTORY = [ # Array of Hash style
     #VER        #DATE       # Description :)
+    { :ver => '0.3.2',  :date =>'20110122', :desc => 'Moved jeweler in right place. Added skel/ wonderful dir' } ,
     { :ver => '0.3.1',  :date =>'20110122', :desc => 'Jeweled. Made app/ dir with also metal/. Preparing Thor script to deploy' } ,
     { :ver => '0.2.2',  :date =>'20110122', :desc => 'Great changes ahead. Still I have the bad symlink though :(' } ,
     { :ver => '0.2.1a', :date =>'20110121', :desc => 'Corrected typo' } ,
@@ -10,29 +11,6 @@ $RIC_ADDONS_HISTORY = [ # Array of Hash style
 
 $RIC_ADDONS_VER  =  $RIC_ADDONS_HISTORY.first[:ver]  # version
 $RIC_ADDONS_DATE =  $RIC_ADDONS_HISTORY.first[:date] # version
-
-# Copied from here: 
-# 1. http://www.themodestrubyist.com/2010/03/05/rails-3-plugins---part-2---writing-an-engine/
-# 2. http://www.railsfire.com/article/building-dry-gems-thor-and-jeweler
-begin
-  require "jeweler"
-  Jeweler::Tasks.new do |gem|
-    gem.name = "ric_addons"
-    gem.summary = "RicAddons experimental Engine for Rails 3 (summary)"
-    gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*", 
-      "README", "VERSION"
-    ]
-    gem.email = "riccardo.carlesso@gmail.com"
-    gem.homepage = "http://github.com/palaldius/ric_addons"
-    gem.description = "RicAddons experimental Engine for Rails 3 (description)"
-    gem.authors = ["Riccardo Carlesso"]
-    # other fields that would normally go in your gemspec
-    # like authors, email and has_rdoc can also be included here
-  end
-rescue
-  puts "Jeweler or one of its dependencies is not installed."
-end
-
 
 require File.dirname(__FILE__) + '/lib/acts_as_carlesso'
 require 'ric_addons'
