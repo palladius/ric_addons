@@ -7,9 +7,11 @@ module RicAddons
     find :all, options.merge(:conditions => [[fields].flatten.map { |f| "#{f} LIKE :query"}.join(' OR '), {:query => "%#{query}%" } ] )  
   end
   
-  def self.yellow(str)
-    "[RicAddons] \033[1;33m#{str}\033[0m"
-  end
+  def self.gray(str);    "[its GREY!] \033[1;30m#{str}\033[0m" ; end
+  def self.grey(str);    "[RicAddons] \033[1;30m#{str}\033[0m" ; end
+  def self.red(str);     "[RicAddons] \033[1;31m#{str}\033[0m" ; end
+  def self.green(str);   "[RicAddons] \033[1;32m#{str}\033[0m" ; end
+  def self.yellow(str);  "[RicAddons] \033[1;33m#{str}\033[0m" ; end
   
   def self.pyellow(str)
     puts yellow(str)

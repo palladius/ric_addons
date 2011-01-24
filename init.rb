@@ -1,6 +1,7 @@
 # Include hook code here
 
 $RIC_ADDONS_HISTORY = [ # Array of Hash style
+  { :ver => '0.4.2',  :date =>'20110124', :desc => 'Just added yellow red green and gr[ae]y :)' } ,
   { :ver => '0.4.1',  :date =>'20110122', :desc => 'Compiles!' } ,
   { :ver => '0.3.2',  :date =>'20110122', :desc => 'Moved jeweler in right place. Added skel/ wonderful dir' } ,
   { :ver => '0.3.1',  :date =>'20110122', :desc => 'Jeweled. Made app/ dir with also metal/. Preparing Thor script to deploy' } ,
