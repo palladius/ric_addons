@@ -1,12 +1,12 @@
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+#require 'rake/rdoctask'
+require "jeweler"
 
 # Copied from here: 
 # 1. http://www.themodestrubyist.com/2010/03/05/rails-3-plugins---part-2---writing-an-engine/
 # 2. http://www.railsfire.com/article/building-dry-gems-thor-and-jeweler
 begin
-  require "jeweler"
   Jeweler::Tasks.new do |gem|
     gem.name = "ric_addons"
     gem.summary = "RicAddons experimental Engine for Rails 3 (summary)"
